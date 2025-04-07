@@ -9,10 +9,12 @@ pause
 echo Checking packages...
 
 if not exist "packages.zip" (
-    powershell -Command "Invoke-WebRequest -Uri https://github.com/zile42o/vsall/packages.zip -OutFile packages.zip"
+    echo Downloading packages...
+    powershell -Command "Invoke-WebRequest -Uri https://github.com/zile42O/vsall/raw/refs/heads/main/packages.zip -OutFile packages.zip"
 )
 
 if exist "packages.zip" (
+    echo Extracting packages...
     powershell -Command "Expand-Archive -Path 'packages.zip' -DestinationPath '.'"
 )
 
